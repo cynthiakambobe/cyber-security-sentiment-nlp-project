@@ -1,0 +1,18 @@
+{
+  "raw_path": "data\\raw\\corpus_raw.json",
+  "sample_size": 3472,
+  "random_seed": 42,
+  "keyword_count": 90,
+  "raw_records": 24853,
+  "valid_raw_records_excluding_scraper_errors": 24852,
+  "non_empty_valid_comments": 24498,
+  "keyword_eligible_comments": 12925,
+  "keyword_ineligible_comments": 11573,
+  "selected_comments": 3472,
+  "selection_rule": "Simple random sample without replacement from keyword-eligible comments using pandas.DataFrame.sample(random_state=seed).",
+  "outputs": {
+    "eligible": "data\\interim\\keyword_eligible_comments.csv",
+    "ineligible": "data\\interim\\keyword_ineligible_comments.csv",
+    "selected": "data\\processed\\selected_comments_for_annotation_3472_seed42.csv"
+  }
+}

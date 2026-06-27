@@ -1,11 +1,7 @@
 pandas
 numpy
 scikit-learn
-matplotlib
-seaborn
-jupyterlab
-ipykernel
-apify-client
-requests
-beautifulsoup4
-lxml
+nltk
+joblib
+streamlit
+plotly

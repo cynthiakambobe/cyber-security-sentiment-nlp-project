@@ -1,1 +1,60 @@
+# Python/cache
 venv/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local/editor files
+.vscode/
+.agents/
+.codex/
+
+# Thesis/report material excluded from app deployment
+docs/
+notebooks/
+annotation/
+Annotation/
+*.docx
+*.xlsx
+
+# Large archives and local exports
+*.zip
+
+# Raw/intermediate/private data
+data/raw/
+data/interim/
+data/processed/*
+!data/processed/
+!data/processed/corpus_preprocessed_3472.csv
+!data/processed/selection_manifest_3472_seed42.json
+
+# Keep only lightweight model artifacts needed by the deployed app.
+models/*
+!models/svm/
+models/svm/*
+!models/svm/tfidf_svm.joblib
+!models/svm/tfidf_svm_confusion_matrix.csv
+
+# Keep dashboard result summaries and LDA visualisation.
+results/*
+!results/model_comparison/
+!results/lda/
+results/model_comparison/*
+!results/model_comparison/comparison_metrics.csv
+!results/model_comparison/comparison_confusion_matrices.png
+!results/model_comparison/aligned_test_predictions.csv
+!results/model_comparison/separate_confusion_matrices/
+!results/model_comparison/separate_confusion_matrices/*.png
+results/lda/*
+!results/lda/topics.csv
+!results/lda/topics_named.csv
+!results/lda/document_topics.csv
+!results/lda/document_topics_named.csv
+!results/lda/topic_sentiment_counts.csv
+!results/lda/topic_sentiment_named.csv
+!results/lda/topic_sentiment_percentages.csv
+!results/lda/coherence_scores.csv
+!results/lda/coherence_curve.png
+!results/lda/lda_visualisation.html
+!results/lda/topic_word_overlap.csv
