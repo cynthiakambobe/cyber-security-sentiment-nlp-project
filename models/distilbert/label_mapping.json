@@ -1,0 +1,12 @@
+{
+  "label_to_id": {
+    "NEGATIVE": 0,
+    "NEUTRAL": 1,
+    "POSITIVE": 2
+  },
+  "id_to_label": {
+    "0": "NEGATIVE",
+    "1": "NEUTRAL",
+    "2": "POSITIVE"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "model": "distilbert-base-uncased",
+  "random_seed": 42,
+  "max_length": 128,
+  "epochs_requested": 4,
+  "learning_rate": 2e-05,
+  "train_records": 2430,
+  "validation_records": 520,
+  "test_records": 521,
+  "test_accuracy": 0.6679462571976967,
+  "test_macro_f1": 0.6684557604136182
+}

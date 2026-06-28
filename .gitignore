@@ -29,12 +29,40 @@ data/processed/*
 !data/processed/corpus_preprocessed_3472.csv
 !data/processed/selection_manifest_3472_seed42.json
 
-# Keep only lightweight model artifacts needed by the deployed app.
+# Keep model artifacts needed by the deployed app.
 models/*
 !models/svm/
 models/svm/*
 !models/svm/tfidf_svm.joblib
 !models/svm/tfidf_svm_confusion_matrix.csv
+!models/svm/w2v_svm.joblib
+!models/svm/w2v_svm_confusion_matrix.csv
+!models/svm/word2vec_sg300.joblib
+!models/cnn_lstm_svm/
+models/cnn_lstm_svm/*
+!models/cnn_lstm_svm/cnn_lstm.keras
+!models/cnn_lstm_svm/cnn_lstm_svm_head.joblib
+!models/cnn_lstm_svm/cnn_lstm_svm_confusion_matrix.csv
+!models/cnn_lstm_svm/training_history.csv
+!models/distilbert/
+models/distilbert/*
+!models/distilbert/classification_report.csv
+!models/distilbert/confusion_matrix.csv
+!models/distilbert/confusion_matrix.png
+!models/distilbert/label_mapping.json
+!models/distilbert/test_metrics.json
+!models/distilbert/test_predictions.csv
+!models/distilbert/training_curves.png
+!models/distilbert/training_history.csv
+!models/distilbert/model/
+models/distilbert/model/*
+!models/distilbert/model/config.json
+!models/distilbert/model/model.safetensors
+!models/distilbert/model/special_tokens_map.json
+!models/distilbert/model/tokenizer.json
+!models/distilbert/model/tokenizer_config.json
+!models/distilbert/model/training_args.bin
+!models/distilbert/model/vocab.txt
 
 # Keep dashboard result summaries and LDA visualisation.
 results/*

@@ -5,3 +5,7 @@ nltk
 joblib
 streamlit
 plotly
+gensim
+tensorflow
+torch
+transformers==4.44.2
