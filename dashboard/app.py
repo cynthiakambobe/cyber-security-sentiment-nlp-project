@@ -267,14 +267,18 @@ def available_predictors():
     predictors = {}
     if (MODEL_ROOT / "svm" / "tfidf_svm.joblib").exists():
         predictors["TF-IDF + SVM"] = "tfidf"
+    gensim_runtime_available = importlib.util.find_spec("gensim") is not None
     if (
         (MODEL_ROOT / "svm" / "w2v_svm.joblib").exists()
         and (MODEL_ROOT / "svm" / "word2vec_sg300.joblib").exists()
+        and gensim_runtime_available
     ):
         predictors["Word2Vec + SVM"] = "word2vec"
+    tensorflow_runtime_available = importlib.util.find_spec("tensorflow") is not None
     if (
         (MODEL_ROOT / "cnn_lstm_svm" / "cnn_lstm.keras").exists()
         and (MODEL_ROOT / "cnn_lstm_svm" / "cnn_lstm_svm_head.joblib").exists()
+        and tensorflow_runtime_available
     ):
         predictors["CNN-LSTM + SVM"] = "cnn_lstm"
     distilbert_runtime_available = (

@@ -14,18 +14,44 @@ everywhere so they can never drift.
 beside the scripts here so `from preprocessing import ...` works in the flat layout.)
 """
 import re
-import nltk
-for _pkg in ("stopwords", "wordnet", "omw-1.4"):
-    nltk.download(_pkg, quiet=True)
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
+
+try:
+    import nltk
+    for _pkg in ("stopwords", "wordnet", "omw-1.4"):
+        nltk.download(_pkg, quiet=True)
+    from nltk.corpus import stopwords
+    from nltk.stem import WordNetLemmatizer
+except Exception:
+    nltk = None
+    stopwords = None
+    WordNetLemmatizer = None
 
 # Negation words are RETAINED (they flip sentiment: "not safe" != "safe").
 NEGATORS = {"no", "not", "nor", "none", "never", "cannot", "cant", "wont", "dont",
             "doesnt", "didnt", "isnt", "arent", "wasnt", "werent", "shouldnt",
             "wouldnt", "couldnt", "against", "without", "nothing", "neither"}
-STOPWORDS = set(stopwords.words("english")) - NEGATORS
-_LEM = WordNetLemmatizer()
+_BASIC_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "been", "by", "for", "from",
+    "has", "have", "he", "her", "his", "i", "in", "is", "it", "its", "of",
+    "on", "or", "our", "she", "that", "the", "their", "them", "they", "this",
+    "to", "was", "we", "were", "with", "you", "your",
+}
+
+try:
+    STOPWORDS = set(stopwords.words("english")) - NEGATORS
+except Exception:
+    STOPWORDS = _BASIC_STOPWORDS - NEGATORS
+
+_LEM = WordNetLemmatizer() if WordNetLemmatizer is not None else None
+
+
+def _lemmatize(word):
+    if _LEM is None:
+        return word
+    try:
+        return _LEM.lemmatize(word)
+    except Exception:
+        return word
 
 
 def light_clean(text):
@@ -48,7 +74,7 @@ def tokens(text, extra_stop=frozenset(), min_chars=2):
     t = re.sub(r"#(\w+)", r"\1", t)          # keep the hashtag word, drop '#'
     t = re.sub(r"[^a-z\s]", " ", t)
     stop = STOPWORDS | set(extra_stop)
-    return [_LEM.lemmatize(w) for w in t.split() if w not in stop and len(w) >= min_chars]
+    return [_lemmatize(w) for w in t.split() if w not in stop and len(w) >= min_chars]
 
 
 def preprocess(text):
